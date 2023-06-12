@@ -70,7 +70,10 @@ class ShowOrderViewController: UIViewController, ShowOrderDisplayLogic
             }
         }
     }
-
+    @IBAction func didTapEditOrder(_ sender: Any) {
+        self.performSegue(withIdentifier: "EditOrder", sender: nil)
+    }
+    
     // MARK: View lifecycle
 
     override func viewDidLoad()

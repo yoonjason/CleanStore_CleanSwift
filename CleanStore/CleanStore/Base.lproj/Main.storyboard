@@ -889,7 +889,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qCW-1n-sRw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="OTo-wW-5fg"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="OTo-wW-5fg">
+                            <connections>
+                                <action selector="didTapEditOrder:" destination="RSJ-Hx-pgf" id="zFS-Lf-Jp5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="orderDateLabel" destination="1vb-XT-pX9" id="tlf-KQ-Nuj"/>
@@ -924,7 +928,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hGK-E2-ZlW"/>
+        <segue reference="THV-dp-ysc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

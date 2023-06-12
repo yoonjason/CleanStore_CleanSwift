@@ -20,8 +20,8 @@ protocol CreateOrderBusinessLogic
 
 protocol CreateOrderDataStore
 {
-    var order: Order? { get }
-    //var name: String { get set }
+    var orderToEdit: Order? { get set }
+    
 }
 
 class CreateOrderInteractor: CreateOrderBusinessLogic, CreateOrderDataStore
@@ -33,7 +33,8 @@ class CreateOrderInteractor: CreateOrderBusinessLogic, CreateOrderDataStore
         ShipmentMethod(speed: .OneDay).toString(),
         ShipmentMethod(speed: .TwoDay).toString(),
     ]
-    var order: Order?
+    var orderToEdit: Order?
+    
 
     func formatExpirationDate(request: CreateOrder.FormatExpirationDate.Request) {
         let response = CreateOrder.FormatExpirationDate.Response(date: request.date)
