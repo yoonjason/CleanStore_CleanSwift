@@ -15,6 +15,9 @@ import UIKit
 protocol CreateOrderPresentationLogic
 {
     func presentExpirationDate(response: CreateOrder.FormatExpirationDate.Response)
+    func presentCreatedOrder(response: CreateOrder.CreateOrder.Response)
+    func presentOrderToEdit(response: CreateOrder.EditOrder.Response)
+    func presentOrderToUpdate(response: CreateOrder.UpdateOrder.Response)
 }
 
 class CreateOrderPresenter: CreateOrderPresentationLogic
@@ -34,4 +37,22 @@ class CreateOrderPresenter: CreateOrderPresentationLogic
         let viewModel = CreateOrder.FormatExpirationDate.ViewModel(date: date)
         viewController?.displayExpirationDate(viewModel: viewModel)
     }
+
+    func presentCreatedOrder(response: CreateOrder.CreateOrder.Response) {
+        let viewModel = CreateOrder.CreateOrder.ViewModel(order: response.order!)
+        viewController?.displayCreatedOrder(viewModel: viewModel)
+    }
+
+    func presentOrderToEdit(response: CreateOrder.EditOrder.Response) {
+        let order = response.order
+        let viewModel = CreateOrder.EditOrder.ViewModel(orderFormFields: CreateOrder.OrderFormFields(firstName: order.firstName, lastName: order.lastName, phone: order.phone, email: order.email, billingAddressStreet1: order.billingAddress.street1, billingAddressStreet2: order.billingAddress.street2 != nil ? order.billingAddress.street2! : "", billingAddressCity: order.billingAddress.city, billingAddressState: order.billingAddress.state, billingAddressZIP: order.billingAddress.zip, paymentMethodCreditCardNumber: order.paymentMethod.creditCardNumber, paymentMethodCVV: order.paymentMethod.cvc, paymentMethodExpirationDate: order.paymentMethod.expirationDate, paymentMethodExpirationDateString: dateFormatter.string(from: order.paymentMethod.expirationDate), shipmentAddressStreet1: order.shipmentAddress.street1, shipmentAddressStreet2: order.shipmentAddress.street2 != nil ? order.shipmentAddress.street1 : "", shipmentAddressCity: order.shipmentAddress.city, shipmentAddressState: order.shipmentAddress.state, shipmentAddressZIP: order.shipmentAddress.zip, shipmentMethodSpeed: order.shipmentMethod.speed.rawValue, shipmentMethodSpeedString: order.shipmentMethod.toString(), id: order.id, date: order.date, total: order.total))
+        viewController?.displayOrderToEdit(viewModel: viewModel)
+    }
+    
+    func presentOrderToUpdate(response: CreateOrder.UpdateOrder.Response) {
+        let order = response.order
+        let viewModel = CreateOrder.UpdateOrder.ViewModel(order: order)
+        viewController?.displayOrderToUpdate(viewModel: viewModel)
+    }
+
 }

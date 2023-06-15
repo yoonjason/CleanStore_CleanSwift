@@ -679,7 +679,13 @@
                             <outlet property="delegate" destination="cb0-Ku-4d3" id="4wU-wN-H1Q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Create Order" id="an5-CE-Mae"/>
+                    <navigationItem key="navigationItem" title="Create Order" id="an5-CE-Mae">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Fh-ba-5Hf">
+                            <connections>
+                                <action selector="didTapSave:" destination="cb0-Ku-4d3" id="js8-D3-sT1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billingAddressCityTextField" destination="Xy8-aS-FDO" id="1V4-78-MPV"/>
                         <outlet property="billingAddressStateTextField" destination="9dV-0y-S7f" id="PFs-gx-8fd"/>

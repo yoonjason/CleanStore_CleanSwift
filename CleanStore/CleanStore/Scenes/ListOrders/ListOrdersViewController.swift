@@ -75,8 +75,11 @@ class ListOrdersViewController: UITableViewController, ListOrdersDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        doSomething()
-        fetchOrdersOnLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchOrdersOnLoad()
     }
 
     func fetchOrdersOnLoad() {
